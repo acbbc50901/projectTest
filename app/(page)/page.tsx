@@ -4,19 +4,19 @@ import styled from "styled-components";
 import { useRouter } from "next/navigation";
 
 const Container = styled.div`
-  display: flex;
-  background: linear-gradient(to bottom,#fcce97, #C7802D);
-  width: 100vw;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  // flex-direction: column;
+  // flex-wrap: wrap;
   gap: 20px;
+  height: 100%;
 `;
 
 const Title = styled.div<TitleInterface>`
   border-radius: 10px;
   width: 400px;
+  // min-height: 200px;
   height: 200px;
   display: flex;
   justify-content: center;
@@ -46,6 +46,16 @@ export default function Home() {
 
   return (
     <Container onClick={() => router.push('./')}>
+      <SmailBox text="你好朋友" classes="white" />
+      <SmailBox text="還好朋友" classes="black"/>
+      <SmailBox text="你好朋友" classes="white" />
+      <SmailBox text="還好朋友" classes="black"/>
+      <SmailBox text="你好朋友" classes="white" />
+      <SmailBox text="還好朋友" classes="black"/>
+      <SmailBox text="你好朋友" classes="white" />
+      <SmailBox text="還好朋友" classes="black"/>
+      <SmailBox text="你好朋友" classes="white" />
+      <SmailBox text="還好朋友" classes="black"/>
       <SmailBox text="你好朋友" classes="white" />
       <SmailBox text="還好朋友" classes="black"/>
     </Container>
