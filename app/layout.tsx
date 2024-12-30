@@ -1,12 +1,19 @@
 'use client';
 
 // import { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Noto_Sans_TC } from "next/font/google";
 import "./globals.css";
 import StyledComponentsRegistry from "@/lib/registry";
 import styled from "styled-components";
+import { Nav } from "./components";
 
 // 字型載入
+
+const NotoSansTC = Noto_Sans_TC({
+  variable: "--noto-sans-tc",
+  subsets: ["latin"],
+});
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -30,17 +37,18 @@ const Container = styled.div`
     flex: 1; /* 子項按照比例分配空間 */
     padding: 0;
     height: 100%;
+    padding: 20px; 
     background-color: #f0f0f0;
   }
 
   .right {
     flex: 9;
     background: linear-gradient(to bottom,#fcce97, #C7802D);
-    padding: 0px; 
+    padding: 20px; 
     height: 100%;
     background-color: #fff;
     overflow-y: auto;
-
+  
     &::-webkit-scrollbar {
       width: 5px;
     }
@@ -69,11 +77,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${NotoSansTC.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <StyledComponentsRegistry>
           <Container>
-            <div className="left">left</div>
+            <div className="left"><Nav /></div>
             <div className="right">{children}</div>
           </Container>
         </StyledComponentsRegistry>
