@@ -14,7 +14,7 @@ export async function POST(req: Request) {
     try {
       const body = await req.json();
 
-      return NextResponse.json({ok: body});
+      return NextResponse.json(body);
 
     } catch (error) {
       return NextResponse.json({msg: '錯誤', error: error})

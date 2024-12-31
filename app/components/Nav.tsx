@@ -39,13 +39,11 @@ export const Nav = () => {
   const ROUTE = usePathname();
   const routeSegments = ROUTE.split('/').filter(Boolean); // 分割並過濾空值
 
-  console.log(ROUTE, routeSegments);
-
   return (
     <Navs>
       <Link className={`${routeSegments.length === 0 && "isYou"}`} href="/">首頁</Link>
       <Link className={`${routeSegments[0] === 'drop' && "isYou"}`} href="/drop">拖曳</Link>
-      <Link className={`${routeSegments[0] === 'blog/1' && "isYou"}`} href="/blog/1">Contact</Link>
+      <Link className={`${routeSegments[0] === 'blog' && "isYou"}`} href="/blog/1">Contact</Link>
     </Navs>
   )
 }

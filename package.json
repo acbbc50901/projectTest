@@ -9,9 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.1",
     "babel-plugin-styled-components": "^2.1.4",
+    "gsap": "^3.12.5",
     "next": "15.1.2",
     "react": "^19.0.0",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^19.0.0",
     "styled-components": "^6.1.13"
   },
