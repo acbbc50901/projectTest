@@ -1,23 +1,37 @@
-'use client';
+'use strict';
 
 import React from 'react';
 import { useDrag } from 'react-dnd';
 
-interface CardProps {
-  text: string;
+interface OptionProps {
+  type: string;
 }
 
-export default function Card({ text }: CardProps) {
+export default function Option({ type } : OptionProps) {
+  
   const ref = React.useRef<HTMLDivElement>(null);
+  const option = React.useCallback(() => {
+    switch (type) {
+      case 'image':
+        
+        return '圖片';
+      case 'text':
+
+        return '文字';
+      default:
+        break;
+    }
+  }, [type])
+
   const [{ isDragging }, dragRef] = useDrag(() => ({
-    type: 'CARD', // 定義拖拽類型
-    item: { text }, // 傳遞的數據
+    type: 'OPTION',
+    item: { type },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
-  }));
+  }))
 
-  dragRef(ref);
+  dragRef(ref)
   return (
     <div
       ref={ref}
@@ -30,7 +44,7 @@ export default function Card({ text }: CardProps) {
         cursor: 'move',
       }}
     >
-      {text}
+      {option()}
     </div>
-  );
+  )
 }

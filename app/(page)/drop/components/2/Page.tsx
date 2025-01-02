@@ -1,6 +1,6 @@
 'use client';
 import * as React from 'react';
-import { DndProvider, useDragLayer } from 'react-dnd';
+import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { Container } from '../../_style/style';
 import { Item } from './Item';
@@ -10,6 +10,8 @@ export default function Contant() {
 
   const itemsRef = React.useRef(['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'])
   const [items, setItems] = React.useState(itemsRef.current);
+  const [hoverState, setHoverState] = React.useState<'enter' | 'over' | 'leave'>('leave');
+  
   const move = ({nowIndex, newIndex}: {nowIndex: number, newIndex: number}) => {
     console.log('nowIndex', nowIndex, 'newIndex', newIndex)
     const newItems = [...items]
@@ -36,6 +38,8 @@ export default function Contant() {
                   moveItem={move}
                   index={index}
                   item={item}
+                  hoverState={hoverState}
+                  setHoverState={setHoverState}
                 />
               )
             }

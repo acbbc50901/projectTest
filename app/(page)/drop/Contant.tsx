@@ -4,6 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Test1 from './components/1/Page';
 import Test2 from './components/2/Page';
+import Test3 from './components/3/Page';
 
 const Container = styled.div`
   dispaly: flex;
@@ -13,9 +14,10 @@ const Container = styled.div`
 
 export default function Contant() {
   return (
-    <div>
+    <Container>
       <Test1 />
       <Test2 />
-    </div>
+      <Test3 />
+    </Container>
   );
 }
