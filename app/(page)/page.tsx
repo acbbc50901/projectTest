@@ -2,6 +2,7 @@
 // import Image from "next/image";
 import styled from "styled-components";
 import { useRouter } from "next/navigation";
+import type { Theme } from "@/lib/theme";
 
 const Container = styled.div`
   // display: flex;
@@ -21,7 +22,8 @@ const Title = styled.div<TitleInterface>`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${(props) => (props.primary === "white" ? "#fff" : "#000")};
+  color: ${(props) => props.theme.colors.primary};
+  background-color: ${(props) => (props.$primary === "white" ? "#fff" : "#000")};
 `;
 
 interface BoxInterface {
@@ -29,13 +31,14 @@ interface BoxInterface {
   classes: string;
 }
 
-interface TitleInterface {
-  primary: string;
+interface TitleInterface extends Partial<Theme> {
+  $primary: string;
+  // color: string;
 }
 
 const SmailBox : React.FC<BoxInterface> = ({ text, classes }) => {
   return (
-    <Title primary={classes}>
+    <Title $primary={classes}>
       {text} 
     </Title>
   )

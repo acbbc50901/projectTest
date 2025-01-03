@@ -1,11 +1,13 @@
 'use client';
 
+import * as React from 'react';
 // import { Metadata } from "next";
 import { Geist, Geist_Mono, Noto_Sans_TC } from "next/font/google";
 import "./globals.css";
 import StyledComponentsRegistry from "@/lib/registry";
-import styled from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 import { Nav } from "./components";
+import { theme, darkTheme } from "../lib/theme";
 
 // 字型載入
 
@@ -74,16 +76,22 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const [isDark, setIsDark] = React.useState(false);
+
+
   return (
     <html lang="en">
       <body
         className={`${NotoSansTC.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <StyledComponentsRegistry>
-          <Container>
-            <div className="left"><Nav /></div>
-            <div className="right">{children}</div>
-          </Container>
+          <ThemeProvider theme={isDark ? darkTheme : theme}>
+            <Container>
+              <div className="left"><Nav isDark={isDark} setIsDark={setIsDark}/></div>
+              <div className="right">{children}</div>
+            </Container>
+          </ThemeProvider>
         </StyledComponentsRegistry>
       </body>
     </html>

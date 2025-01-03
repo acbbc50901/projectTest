@@ -4,6 +4,11 @@ import styled from "styled-components";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+interface NavProps {
+  isDark: boolean;
+  setIsDark: (isDark: boolean) => void;
+}
+
 const Navs = styled.div`
   display: flex;
   flex-direction: column;
@@ -34,7 +39,7 @@ const Navs = styled.div`
   }
 `
 
-export const Nav = () => {
+export const Nav : React.FC<NavProps> = ({isDark, setIsDark}: NavProps) => {
 
   const ROUTE = usePathname();
   const routeSegments = ROUTE.split('/').filter(Boolean); // 分割並過濾空值
@@ -44,6 +49,7 @@ export const Nav = () => {
       <Link className={`${routeSegments.length === 0 && "isYou"}`} href="/">首頁</Link>
       <Link className={`${routeSegments[0] === 'drop' && "isYou"}`} href="/drop">拖曳</Link>
       <Link className={`${routeSegments[0] === 'blog' && "isYou"}`} href="/blog/1">Contact</Link>
+      <div onClick={() => setIsDark(!isDark)}>{isDark ? '黑暗' : '亮光'}</div>
     </Navs>
   )
 }
