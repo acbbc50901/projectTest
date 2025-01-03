@@ -1,48 +1,50 @@
 'use client';
 import * as React from 'react';
-import { DndProvider, useDragLayer } from 'react-dnd';
+import { DndProvider, 
+  // useDragLayer 
+} from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { Container } from '../../_style/style';
 import { Item } from './Item';
 
 // 拖曳預覽
-const CustomDragLayer = () => {
+// const CustomDragLayer = () => {
 
-  const { itemType, isDragging, item, initialOffset, currentOffset } = useDragLayer((monitor) => ({
-    itemType: monitor.getItemType(),
-    isDragging: monitor.isDragging(),
-    item: monitor.getItem(),
-    initialOffset: monitor.getInitialSourceClientOffset(),
-    currentOffset: monitor.getSourceClientOffset(),
-  })); 
+//   const { itemType, isDragging, item, initialOffset, currentOffset } = useDragLayer((monitor) => ({
+//     itemType: monitor.getItemType(),
+//     isDragging: monitor.isDragging(),
+//     item: monitor.getItem(),
+//     initialOffset: monitor.getInitialSourceClientOffset(),
+//     currentOffset: monitor.getSourceClientOffset(),
+//   })); 
 
-  console.log(
-    'item',
-    item,
-    'initialOffset',
-    initialOffset,
-    'currentOffset',
-    currentOffset,
-    'isDragging',
-    isDragging,
-    'itemType',
-    itemType
-  )
+//   console.log(
+//     'item',
+//     item,
+//     'initialOffset',
+//     initialOffset,
+//     'currentOffset',
+//     currentOffset,
+//     'isDragging',
+//     isDragging,
+//     'itemType',
+//     itemType
+//   )
 
-  if (!isDragging) {
-    return null;
-  }
+//   if (!isDragging) {
+//     return null;
+//   }
 
-  const transform = currentOffset ? `translate(${currentOffset.x}px, ${currentOffset.y}px)` : '';
+//   const transform = currentOffset ? `translate(${currentOffset.x}px, ${currentOffset.y}px)` : '';
 
-  return (
-    <div style={{ position: 'fixed', pointerEvents: 'none', zIndex: 100, left: 0, top: 0, transform }}>
-      <div style={{ padding: '8px', border: '1px solid gray', backgroundColor: 'white' }}>
-        {item.text}
-      </div>
-    </div>
-  );
-}
+//   return (
+//     <div style={{ position: 'fixed', pointerEvents: 'none', zIndex: 100, left: 0, top: 0, transform }}>
+//       <div style={{ padding: '8px', border: '1px solid gray', backgroundColor: 'white' }}>
+//         {item.text}
+//       </div>
+//     </div>
+//   );
+// }
 
 export default function Contant() {
 
