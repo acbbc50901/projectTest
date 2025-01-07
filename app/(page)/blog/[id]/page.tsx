@@ -43,11 +43,12 @@ export default function Blog({ params } : { params: { id: string }}) {
   // GET
   const { data } = 
     useFetch<null, GetApiProps>({
-      url: '/api/getHi',
+      url: '/api/puppteer',
       loading: getLoading,
       onSucess,
       onError,
     })
+
   // Post
   const {} =
     useFetch<PostReqApiProps, PostResApiProps>({
