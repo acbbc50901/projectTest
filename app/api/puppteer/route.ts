@@ -18,7 +18,7 @@ export async function GET() {
         return { img, price, title, city }; // 整合成一個物件
       });
     });
-    console.log(products);
+    console.log(products, products.length);
 
     console.log('已成功前往 Google!');
     return NextResponse.json({ message: "成功前往!" });
@@ -33,7 +33,7 @@ export async function POST() {
   try {
     const browser = await puppeteer.launch({headless: true}); // 開啟瀏覽器
     const page = await browser.newPage(); // 開啟新分頁
-    await page.goto('https://www.facebook.com/besttour.com.tw/posts/pfbid02w5Er4Sb5UpPZzqRAF8kMpkwx5a4ypjQh6KZoFoZEkiHvjSghBizCEcMHyKZsGW8sl'); // 前往 特定網址
+    await page.goto(''); // 前往 特定網址
     
     const products = await page.$$eval('.box', (products) => {
       return products.map((product) => {
@@ -48,7 +48,7 @@ export async function POST() {
     console.log(products);
 
     console.log('已成功前往 Google!');
-    return NextResponse.json({ message: "成功前往!" });
+    return NextResponse.json({ message: "成功前往!" , products});
 
   } catch (error) {
     return NextResponse.json({msg: '錯誤', error: error})
